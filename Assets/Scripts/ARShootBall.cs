@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -87,15 +87,30 @@ public class ARShootBall : MonoBehaviour {
 
 	}
 
-	    //发射精灵球
-		private void shootBall() {
-			transform.gameObject.AddComponent<Rigidbody>();
-			Rigidbody _rigBall = transform.GetComponent<Rigidbody>();
-			_rigBall.velocity = offset * 0.003f * speedFlick;
-			_rigBall.AddForce(transform.parent.transform.forward * FwdForce);
-			_rigBall.AddTorque(transform.right);
-			_rigBall.drag = 0.5f;
-			blShooted = true;
-			transform.parent = null;
-		}
+	//发射精灵球
+	private void shootBall() {
+		//给精灵增加刚体组件
+		transform.gameObject.AddComponent<Rigidbody>();
+		//用局部变量获取刚体组件
+		Rigidbody _rigBall = transform.GetComponent<Rigidbody>();
+		//给精灵球一个初始速度，这个速度等于方向（单位向量）乘以速度
+		_rigBall.velocity = offset.normalized * speedFlick; 
+		//给精灵球一个向着屏幕前方的力
+		_rigBall.AddForce(camera.transform.forward * FwdForce);
+		//让精灵球旋转起来
+		_rigBall.AddTorque(transform.right);
+		//设置精灵球的阻力
+		_rigBall.drag = 0.5f;
+		blShooted = true;
+		//让这个发射出去的精灵球脱离父级物体
+		transform.parent = null;
+		//生成新的球
+		StartCoroutine(LateInsBall());
+	}
+
+	IEnumerator LateInsBall() {
+		yield return new WaitForSeconds(0.2f);
+		//延迟生成新的精灵球
+		ARBallCtr.Instance.InsNewBall();
+	}
 }

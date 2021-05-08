@@ -10,12 +10,18 @@ public class ARBallCtr : MonoBehaviour {
 	//存储生成精灵球的位置
 	public Transform PosInsBall;
 
+	public static ARBallCtr Instance;
+
+	void Awake() {
+		Instance = this;
+	}
+
 	// Use this for initialization
 	void Start () {
 		//加载所有路径在“Resources/Balls”中的预制体
 		balls = Resources.LoadAll<GameObject>("Balls");
 
-		insBall();
+		InsNewBall();
 	}
 	
 	// Update is called once per frame
@@ -23,7 +29,7 @@ public class ARBallCtr : MonoBehaviour {
 		
 	}
 
-	private void insBall() {
+	public void InsNewBall() {
 		//生成精灵球
 		GameObject _ball = Instantiate(balls[0], PosInsBall.position, PosInsBall.rotation);
 		//设置精灵球的父级物体保证发射前始终在屏幕的固定位置
