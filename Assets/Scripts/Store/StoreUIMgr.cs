@@ -29,4 +29,9 @@ public class StoreUIMgr : MonoBehaviour {
 		public void UpdatePetType(int index, string strType) {
 		Tx_PetType[index].text = strType;
 	}
+
+	//储存游戏
+	public void Btn_Save() {
+		SaveAndLoad.Save();
+	}
 }

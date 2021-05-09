@@ -18,6 +18,7 @@ public class UI_Mgr_02 : MonoBehaviour {
 	public static UI_Mgr_02 Instance;
 
 	public void Awake() {
+		SaveAndLoad.Load();
 		Instance = this;
 	}
 
