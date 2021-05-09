@@ -104,6 +104,10 @@ public class ARShootBall : MonoBehaviour {
 		blShooted = true;
 		//让这个发射出去的精灵球脱离父级物体
 		transform.parent = null;
+		//发射后减少精灵球数量
+		StaticData.BallNum--;
+		ARUI_Mgr.Instance.UpdateUIBallNum();
+
 		//生成新的球
 		StartCoroutine(LateInsBall());
 	}

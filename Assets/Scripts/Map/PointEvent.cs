@@ -38,7 +38,9 @@ public class PointEvent : MonoBehaviour {
 	private void InsPet() {
 		int _petIndex = Random.Range(0, Pets.Length);
 		//随机一个小精灵序号 随机选择 生成随机小精灵
-		Instantiate(Pets[_petIndex], transform.position, transform.rotation);
+		GameObject _pet = Instantiate(Pets[_petIndex], transform.position, transform.rotation);
+		//把小精灵序号传递给小精灵身上挂载的脚本
+		_pet.GetComponent<Pet_Find>().Pet_Index = _petIndex;
 	}
 
 	//生成精灵球

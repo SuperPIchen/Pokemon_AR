@@ -710,8 +710,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 2, z: 1}
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Size: {x: 1.44, y: 2.56, z: 1}
+  m_Center: {x: 0, y: 1.22, z: 0}
 --- !u!95 &95741699971389556
 Animator:
   serializedVersion: 3
@@ -740,6 +740,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729a72fd3970a1443b1cac8b9fae224e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Pet_Index: 0
 --- !u!137 &137245651566378524
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
